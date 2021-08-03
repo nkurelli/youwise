@@ -10,7 +10,7 @@ const signIn = () => {
 
     // The signed-in user info.
     var user = result.user;
-    window.location = 'index.html';
+    window.location = 'dashboard.html';
   }).catch((error) => {
     // Handle Errors here.
     var errorCode = error.code;
@@ -28,3 +28,18 @@ const signIn = () => {
     console.log(err);
   });
 }
+
+  
+window.onload = (event) => {
+  // Use this to retain user state between html pages.
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      console.log('Logged in as: ' + user.displayName);
+      const googleUserId = user.uid;
+       window.location = 'dashboard.html'; 
+    } else {
+      // If not logged in, navigate back to login page.
+      window.location = 'index.html'; 
+    };
+  });
+};
