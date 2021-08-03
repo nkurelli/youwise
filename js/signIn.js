@@ -10,7 +10,7 @@ const signIn = () => {
 
     // The signed-in user info.
     var user = result.user;
-    window.location = 'dashboard.html';
+    window.location = 'courses.html';
   }).catch((error) => {
     // Handle Errors here.
     var errorCode = error.code;
@@ -36,7 +36,7 @@ window.onload = (event) => {
     if (user) {
       console.log('Logged in as: ' + user.displayName);
       const googleUserId = user.uid;
-       window.location = 'dashboard.html'; 
+       window.location = 'courses.html'; 
     } else {
       // If not logged in, navigate back to login page.
       window.location = 'index.html'; 
