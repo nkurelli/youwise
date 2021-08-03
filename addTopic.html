@@ -290,7 +290,7 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Look </h1>
+                        <h1 class="h3 mb-0 text-gray-800">Add Topic</h1>
                     </div>
                 </div>
                 <section class="hero is-fullheight is-default is-bold">
@@ -299,17 +299,30 @@
                             <div class="columns is-vcentered">
                                 <div class="column is-6 is-offset-3">
                                     <h1 class="title is-2">
-                                        Welcome to 🔥Fire Notes📝!
+                                        ➕ You Can Add A New Topic
                                     </h1>
                                     <h2 class="subtitle is-4">
-                                        Log in to view your notes or create a new one.
+                                        Please fill out the form for adding a Topic
                                     </h2>
                                     <br />
-                                    <p class="has-text-centered">
-                                        <a class="button is-medium is-info is-outlined" onclick="signIn()">
-                                            Sign In
-                                        </a>
-                                    </p>
+                                    <div class="form-group">
+                                        <label for="topicNameInput">Name</label>
+                                        <input type="email" class="form-control" id="topicNameInput"
+                            placeholder="Topic Name">
+                                  
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="topicDescriptionInput">Description</label>
+                                         <textarea class="form-control" id="topicDescriptionInput" rows="3" placeholder="Topic Description"></textarea>
+                                  
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="topicImgInput">Cover Image (Horizontal)</label>
+                                        <input type="text" class="form-control" id="topicImgInput"
+                                       placeholder="Image URL">
+                                  
+                                    </div>
+                                   <button type="submit" class="btn btn-primary mb-2" onclick="onAddTopic()">Add Topic</button>
                                 </div>
                             </div>
                         </div>
@@ -373,11 +386,7 @@
     <script src="js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
-    <script src="vendor/chart.js/Chart.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="js/demo/chart-area-demo.js"></script>
-    <script src="js/demo/chart-pie-demo.js"></script>
+     <script src="js/addTopic.js"></script>
 
 </body>
 
