@@ -1,9 +1,14 @@
 function displayHash() {
     var theHash = window.location.hash;
-    if (theHash.length == 0) { theHash = "_index"; }
-    var elems = document.querySelectorAll("#caption");
-    elems[0].innerText = "Current Hash: " + theHash;
-    return true;
+    theHash = theHash.substring(1); 
+    if (theHash.length > 0) {
+        const topicsRef = firebase.database().ref(`topics/${theHash}`);
+        topicsRef.on('value', (snapshot) => {
+            const data = snapshot.val();
+            var elems = document.querySelectorAll("#caption");
+            elems[0].innerText = "Current Hash: " + JSON.stringify(data);
+        });
+    }
 }
 
 window.addEventListener("hashchange", function () {
