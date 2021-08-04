@@ -37,6 +37,7 @@ const createCard = note => {
             </div>
             <div class="card-body">
                 <p>${note.description}</p>
+                <img src=${note.image}>
             </div>
         </div>`;
 };
