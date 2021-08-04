@@ -1,14 +1,14 @@
 console.log('init viewTopics')
 
 window.onload = event => {
-    console.log('Hello')
   // Firebase authentication goes here.
   firebase.auth().onAuthStateChanged(user => {
     if (user) {
       // Console log the user to confirm they are logged in
       console.log("Logged in as: " + user.displayName);
-      const googleUserId = user.uid;
-      getTopics(googleUserId);
+      document.querySelector("#nameStuff").innerHTML = user.displayName;
+      document.querySelector("#userDropdown").innerHTML+=`<img class="img-profile rounded-circle" src="${user.photoURL}">`;
+      getTopics(user.uid);
     } else {
       // If not logged in, navigate back to login page.
       window.location = "index.html";
@@ -40,7 +40,7 @@ const createCard = note => {
             </div>
             <div class="card-body">
                 <p>${note.description}</p>
-                <img src=${note.image}>
+                <img class= card-img-top src=${note.image}>
             </div>
         </div>`;
 };
