@@ -35,7 +35,7 @@ window.onload = (event) => {
     if (user) {
       console.log('Logged in as: ' + user.displayName);
       const googleUserId = user.uid;
-    //   window.location = 'dashboard.html'; 
+    //  window.location = 'dashboard.html'; 
     } else {
       // If not logged in, navigate back to login page.
     //   
