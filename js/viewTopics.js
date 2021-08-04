@@ -1,5 +1,5 @@
 console.log('init viewTopics')
-
+let databob;
 window.onload = event => {
   // Firebase authentication goes here.
   firebase.auth().onAuthStateChanged(user => {
@@ -21,6 +21,7 @@ const getTopics = userId => {
   const notesRef = firebase.database().ref(`topics/`);
   notesRef.on("value", snapshot => {
     const data = snapshot.val();
+    databob = data;
     renderDataAsHtml(data);
   });
 };
@@ -44,6 +45,26 @@ const createCard = note => {
             </div>
         </div>`;
 };
+
+const searchButton = document.getElementById('search-button');
+const searchInput = document.getElementById('search-input');
+searchButton.addEventListener('click', () => {
+    let cards = "";
+  const inputValue = searchInput.value;
+  if(inputValue==""){
+      renderDataAsHtml(databob);
+  }
+  else{
+      for (const noteItem in databob) {
+    const note = databob[noteItem];
+    if(inputValue===note.name){
+        cards += createCard(note);
+    }
+  }
+  document.querySelector("#app").innerHTML = cards;
+  }
+
+});
 
 function signOut() {
    firebase.auth().signOut()
