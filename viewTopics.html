@@ -18,10 +18,11 @@
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <script defer src="/__/firebase/8.3.1/firebase.js"></script>
-   <!-- include only the Firebase features as you need -->
-   <script defer src="/__/firebase/8.3.1/firebase-database.js"></script>
-   <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/8.3.1/firebase-database.js"></script>
+    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
     <link href="css/sb-admin-2.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">
 </head>
@@ -114,7 +115,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small" id = "nameStuff"></span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small" id="nameStuff"></span>
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -132,7 +133,8 @@
                                     Activity Log
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="index.html" data-toggle="modal" data-target="#logoutModal">
+                                <a class="dropdown-item" href="index.html" data-toggle="modal"
+                                    data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>
@@ -149,21 +151,22 @@
 
                     <!-- Page Heading -->
                     <h1 class="h3 mb-1 text-gray-800">TOPICS</h1>
-                    <p class="mb-4" id="subt">View courses about all sorts of cool topics and even create some of your own!</p>
+                    <p class="mb-4" id="subt">View courses about all sorts of cool topics and even create some of your
+                        own!</p>
 
                     <!-- Content Row -->
                     <div class="row">
                         <div class="col">
-                            <div id = "moduleButton">
-                                <a type="button" href = "addModule.html" id = "module" class="btn btn-primary">
+                            <div id="moduleButton">
+                                <a type="button" href="addModule.html" id="module" class="btn btn-primary">
                                     CREATE A MODULE!
                                 </a>
                             </div>
-                            
+
                         </div>
                         <div class="col">
-                            <div id = "topicButton">
-                                <a type="button" href = "addTopic.html" id = "topic" class="btn btn-primary">
+                            <div id="topicButton">
+                                <a type="button" href="addTopic.html" id="topic" class="btn btn-primary">
                                     CREATE A TOPIC!
                                 </a>
                             </div>
@@ -171,25 +174,25 @@
                     </div>
                     <br>
                     <!-- <div class="row"> -->
-                        <!-- Paste here -->
-                        
+                    <!-- Paste here -->
+
 
                     <!-- </div> -->
 
 
                     <div class="container">
-      <div class="section">
-        <div class="columns">
-          <div class="column has-text-centered">
-            
-            <br />
-          </div>
-        </div>
-        <div id="app" class="columns is-multiline">
-          <!-- Note cards will render here -->
-        </div>
-      </div>
-    </div>
+                        <div class="section">
+                            <div class="columns">
+                                <div class="column has-text-centered">
+
+                                    <br />
+                                </div>
+                            </div>
+                            <div id="app" class="columns is-multiline">
+                                <!-- Note cards will render here -->
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
                 <!-- /.container-fluid -->
@@ -246,8 +249,8 @@
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="js/viewTopics.js"></script>
     <script src="js/userName.js"></script>
+    <script src="js/viewTopics.js"></script>
 </body>
 
 </html>
