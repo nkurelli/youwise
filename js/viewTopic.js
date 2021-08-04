@@ -1,4 +1,4 @@
-function displayHash() {
+function getContentFromHash() {
     var theHash = window.location.hash;
     theHash = theHash.substring(1); 
     if (theHash.length > 0) {
@@ -13,10 +13,10 @@ function displayHash() {
 
 window.addEventListener("hashchange", function () {
     console.log("hashchange event");
-    displayHash();
+    getContentFromHash();
 });
 
 window.addEventListener("DOMContentLoaded", function (ev) {
     console.log("DOMContentLoaded event");
-    displayHash();
+    getContentFromHash();
 });
