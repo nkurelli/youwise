@@ -17,6 +17,12 @@ h1{
     text-align: center;
 }
 
+.card-img-top {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover !important;
+}
+
 #topic-page-hero{
     padding: 5rem 2rem;
       background-repeat: no-repeat;
