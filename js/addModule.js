@@ -83,7 +83,7 @@ const renderContent = () => {
     for (const index in moduleContents) {
         const content = moduleContents[index];
         console.log(content)
-        contentItems.innerHTML += `<div>${content.type} : ${content.url} </div>`
+        contentItems.innerHTML += `<div class="card"><header class="card-header">${content.type}</header> <div class="card-content"> ${content.url} </div></div><br>`
     }
 
 }

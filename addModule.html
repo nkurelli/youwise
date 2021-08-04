@@ -13,18 +13,19 @@
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link
+    <!-- <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+        rel="stylesheet"> -->
 
     <!-- Custom styles for this template-->
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <script defer src="/__/firebase/8.3.1/firebase.js"></script>
     <!-- include only the Firebase features as you need -->
     <script defer src="/__/firebase/8.3.1/firebase-database.js"></script>
     <script defer src="/__/firebase/init.js?useEmulator=true"></script>
     <script src="js/redirect.js"></script>
-    <script src="js/userName.js"></script>
+    
 </head>
 
 <body id="page-top">
@@ -150,54 +151,61 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <!-- <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Add Module</h1>
-                    </div>
+                    </div> -->
                 </div>
                 <section class="hero is-fullheight is-default is-bold">
                     <div class="hero-body">
-                        <div class="container has-text-centered">
+                        <div class="container ">
                             <div class="columns is-vcentered">
-                                <div class="column is-6 is-offset-3">
-                                    <h1 class="title is-2">
-                                        ➕ You Can Add A New Module
+                            
+                                <div class="column is-9 is-offset-1">
+                                    <h1 class="title is-2 has-text-weight-bold has-text-left ">
+                                        Create a new module
                                     </h1>
-                                    <h2 class="subtitle is-4">
+                                   
+                                      <button type="submit" class="btn btn-primary mb-2" style="position:absolute; right:18%; top: 1%;"onclick="onAddModule()">Add
+                                        Module</button>
+                                    <!-- <h2 class="subtitle is-4">
                                         Please fill out the form for adding a module for a existing topic.
-                                    </h2>
+                                    </h2> -->
                                     <br />
 
                                     <div class="form-group">
-                                        <label for="topicSelection">Choose Topic</label>
+                                        <label for="topicSelection" class="has-text-left is-size-7 has-text-weight-semibold" >Choose Topic</label>
                                         <select class="form-control form-control-md" id="topicSelection">
                                         </select>
 
                                     </div>
                                     <div class="form-group">
-                                        <label for="moduleNameInput">Name</label>
-                                        <input type="email" class="form-control" id="moduleNameInput"
+                                        <label for="moduleNameInput" class="has-text-left is-size-7 has-text-weight-semibold">Name</label>
+                                        <input type="email" class="form-control input" id="moduleNameInput"
                                             placeholder="Module Name">
 
                                     </div>
                                     <div class="form-group">
-                                        <label for="moduleDescriptionInput">Description</label>
-                                        <textarea class="form-control" id="moduleDescriptionInput" rows="3"
+                                        <label for="moduleDescriptionInput" class="has-text-left is-size-7 has-text-weight-semibold">Description</label>
+                                        <textarea class="form-control input" id="moduleDescriptionInput" rows="3"
                                             placeholder="Module Description"></textarea>
 
                                     </div>
                                     <div class="form-group">
-                                        <label for="moduleImgInput">Cover Image (Horizontal)</label>
+                                        <label for="moduleImgInput" class="has-text-left is-size-7 has-text-weight-semibold">Cover Image (Horizontal)</label>
                                         <input type="text" class="form-control" id="moduleImgInput"
                                             placeholder="Image URL">
 
                                     </div>
-                                    <button type="submit" class="btn btn-primary mb-2" onclick="onAddModule()">Add
-                                        Module</button>
+                                  
 
                                     <hr />
-                                    <div>
+                                    <div class="card">
+                                        <header class="card-header">
+                                            <h6 class="has-text-center is-size-5 has-text-weight-semibold">Add Content</h6>
+                                        </header>
+                                        <div class="card-content">
                                         <div class="form-group">
-                                            <label for="topicSelection">Content Type</label>
+                                            <label for="topicSelection" class="has-text-left is-size-7 has-text-weight-semibold">Content Type</label>
                                             <select class="form-control form-control-md" id="contentTypeSelect">
                                                 <option value="">Choose Type</option>
                                                 <option value="Website">Website </option>
@@ -206,16 +214,18 @@
                                             </select>
 
                                               <div class="form-group">
-                                        <label for="contentURL">URL</label>
+                                        <label for="contentURL" class="has-text-left is-size-7 has-text-weight-semibold">URL</label>
                                         <input type="text" class="form-control" id="contentURL"
                                             placeholder="https://">
 
                                     </div>
                                         </div>
+                                        </div>
 
                                     </div>
-                                    <button type="submit" class="btn btn-primary mb-2" onclick="onAddNewContent()">Add
-                                        Content</button>
+                                    <div style="padding: 4%; text-align:center;"><button type="submit" class="btn btn-primary mb-2" onclick="onAddNewContent()">Add
+                                        Content</button></div>
+                                    
 
                                     <div id="contentItems"></div>
                                 </div>
