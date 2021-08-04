@@ -22,3 +22,19 @@ h1{
     height: 15vw;
     object-fit: cover !important;
 }
+
+#topic-page-hero{
+    padding: 5rem 2rem;
+      background-repeat: no-repeat;
+  background-position: center;
+    background-size: 100%;
+  object-fit: fill;
+}
+
+#topic-page-title{
+    color: #fff;
+}
+
+#topic-page-description{
+    color: #fff;
+}
