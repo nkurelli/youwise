@@ -1,3 +1,5 @@
+console.log('init viewTopics')
+
 window.onload = event => {
   // Firebase authentication goes here.
   firebase.auth().onAuthStateChanged(user => {
