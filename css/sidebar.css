@@ -69,3 +69,7 @@ body {
 #timePill {
     background-color: hsl(217, 71%, 53%)!important;
 }
+#buttons{
+    background-color: #CFB997 !important;
+    border-color:  #CFB997 !important;
+}

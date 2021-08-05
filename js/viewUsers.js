@@ -51,10 +51,10 @@ const createCard = note => {
                 <h6 class="m-0 font-weight-bold text-primary">${note.name}</h6>
                 
             </div>
-            <div class="card-body">
+            <div class="card-body center">
                 <img class= card-img-top src=${note.image}>
                 <hr>
-                <a class = "btn btn-primary" type=button href=mailto:${email}> Send an Email</a>
+                <a class = "btn btn-primary center" id="buttons" type="button" href=mailto:${email}> Send an Email</a>
             </div>
         </div> </div>`;
 };
