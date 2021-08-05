@@ -24,18 +24,13 @@ function fetchDataFromTopicID() {
 }
 
 const renderModules = (data) => {
-    let moduleCount = 0;
-    let divCount = 0;
+
 
     for (key in data) {
-        if(moduleCount % 3 === 0) {
-            console.log("here", moduleCount);
-            moduleWrapper.innerHTML += '<div class="row">';
-            divCount++;
-        }
+
         
 
-        moduleCount++;
+ 
 
         const module = data[key];
         let contentWrapper = ""
@@ -44,33 +39,31 @@ const renderModules = (data) => {
             contentWrapper += `
                   <li class="list-group-item d-flex justify-content-between align-items-center">
     ${content.name}
-    <span class="badge badge-primary badge-pill">${content.type}</span>
+    <span class="badge badge-primary badge-pill" id="timePill">${content.time} mins</span>
   </li>
                 `
         });
 
         moduleWrapper.innerHTML += `
-                <div class="col-4">
+                <div class="col">
                     <a class="card shadow mb-6" href="viewModule.html?topicId=${topicId}&moduleId=${key}">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">${module.name}</h6>
-            </div>
-            <div class="card-body">
-                <p>${module.description}</p>
-                <img class= card-img-top src=${module.image}>
-            </div>
-<ul class="list-group">
+            <img class= card-img-top src=${module.image}>
+                    <div class="card-header py-3">
+                <h5 class="m-0 font-weight-bold text-primary" id="moduleName">${module.name}</h6>
+                <h6 class="card-text" style="text-align:left;">${module.description}</h6>
+                               <ul class="list-group">
             ${contentWrapper}
             </ul>
+            </div>
+  
+
         </div>
 
                 </div>
             `
 
     }
-    for(let i = 0; i < divCount; i++) {
-      moduleWrapper.innerHTML +=`</div>`
-  }
+
 }
 
 window.addEventListener("DOMContentLoaded", function (ev) {

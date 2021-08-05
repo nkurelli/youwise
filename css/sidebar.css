@@ -30,6 +30,9 @@ body {
     background-color: #CFB997 !important;
     border-color:  #CFB997 !important;
 }
+#topicTitle {
+    color: hsl(217, 71%, 53%) !important;
+}
 
 /* on addmodule.html */
 #add-module {
@@ -52,4 +55,11 @@ body {
 #back-to-topic {
      background-color: #CFB997 !important;
     border-color:  #CFB997 !important;        
+}
+#moduleName {
+ color: hsl(217, 71%, 53%)!important;
+}
+
+#timePill {
+    background-color: hsl(217, 71%, 53%)!important;
 }
