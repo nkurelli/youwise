@@ -90,7 +90,8 @@ const onAddModule = () => {
         name: moduleNameInput.value,
         description: moduleDescriptionInput.value,
         image: moduleImgInput.value,
-        content: moduleContents
+        content: moduleContents,
+        author: googleUser.uuid
     })
         // 3. Clear the form so that we can write a new note
         .then(() => {
