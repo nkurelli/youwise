@@ -47,7 +47,7 @@ const renderTopicList = topics => {
 
 const onAddModule = () => {
     const topicId = selectContent.value
-    firebase.database().ref(`topics/${topicId}`).push({
+    firebase.database().ref(`topics/${topicId}/modules`).push({
         name: moduleNameInput.value,
         description: moduleDescriptionInput.value,
         image: moduleImgInput.value,
@@ -62,27 +62,67 @@ const onAddModule = () => {
             renderContent()
         });
 }
-
-const onAddNewContent = () => {
-
     const contentTypeSelect = document.querySelector("#contentTypeSelect")
     const contentURL = document.querySelector("#contentURL")
     const contentName = document.querySelector("#contentName");
     const contentTime = document.querySelector("#contentTime");
-    moduleContents[Object.keys(moduleContents).length] = {
+
+const onAddNewContent = () => {
+
+    if(validateContent()) {
+          moduleContents[Object.keys(moduleContents).length] = {
         type: contentTypeSelect.value,
         url: contentURL.value,
         name: contentName.value,
         time: contentTime.value,
     }
+        renderContent()
 
-    contentTypeSelect.value = ""
-    contentURL.value = ""
-    contentName.value = ""
-    contentTime.value = ""
-    console.log(moduleContents)
+        contentTypeSelect.value = ""
+        contentURL.value = ""
+        contentName.value = ""
+        contentTime.value = ""
+        console.log(moduleContents)
 
-    renderContent()
+    } else {
+        alert("You cannot leave content inputs blank!")
+    }
+}
+
+contentTypeSelect.addEventListener("onInput", e => {
+    contentTypeSelect.classList.remove("is-danger");
+})
+contentName.addEventListener("onInput", e => {
+    contentName.classList.remove("is-danger");
+})
+contentURL.addEventListener("onInput", e => {
+    contentURL.classList.remove("is-danger");
+})
+contentTime.addEventListener("onInput", e => {
+    contentTime.classList.remove("is-danger");
+})
+
+
+const validateContent = () => {
+    let num = 0;
+    if (contentTypeSelect.value === "") {
+        contentTypeSelect.classList.add("is-danger");
+        num++;
+    }
+    if (contentURL.value === "") {
+        contentURL.classList.add("is-danger");
+        num++;
+    }
+    if (contentName.value === "") {
+        contentName.classList.add("is-danger");
+        num++;
+    }
+    if (contentTime.value === "") {
+        contentTime.classList.add("is-danger");
+        num++;
+    }
+    return (num === 0? true: false);
+
 }
 
 const renderContent = () => {
