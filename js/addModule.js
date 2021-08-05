@@ -84,14 +84,15 @@ const renderTopicList = topics => {
 
 const onAddModule = () => {
     if (validateModule()) {
-    
+    const user = firebase.auth().currentUser;
     const topicId = selectContent.value
     firebase.database().ref(`topics/${topicId}/modules`).push({
         name: moduleNameInput.value,
         description: moduleDescriptionInput.value,
         image: moduleImgInput.value,
+        author: user.uid,
         content: moduleContents,
-        author: googleUser.uuid
+        
     })
         // 3. Clear the form so that we can write a new note
         .then(() => {
