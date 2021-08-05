@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla&display=swap');
+
+body {
+    font-family: 'Karla', sans-serif;
+}
+
 #img {
     background-image: url("https://www.legendsoflearning.com/wp-content/uploads/2020/10/benefits-of-online-learning-graphic.png");
     /* background-size: cover; */

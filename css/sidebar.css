@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla&display=swap');
+
+body {
+    font-family: 'Karla', sans-serif;
+}
+
+
+/* removed bg-gradient-primary from the accordina sidebar class */
+#accordionSidebar {
+    background-color: #CFB997 !important;
+}
+
+/* removed btn-primary from class */
+#search-button {
+    background-color: #CFB997 !important;
+    border-color:  #CFB997 !important;
+}
+
+#module {
+    background-color: #CFB997 !important;
+    border-color:  #CFB997 !important;
+}
+
+#topic {
+    background-color: #CFB997 !important;
+    border-color:  #CFB997 !important;
+}
+

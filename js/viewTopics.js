@@ -66,7 +66,7 @@ const createCard = (noteId, note) => {
   return `
          <a class="card shadow mb-4" href="viewTopic.html?topicId=${noteId}">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">${note.name}</h6>
+                <h6 class="m-0 font-weight-bold" id="topicTitle">${note.name}</h6>
             </div>
             <div class="card-body">
                 <p>${note.description}</p>
