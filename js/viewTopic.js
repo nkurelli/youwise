@@ -70,3 +70,14 @@ window.addEventListener("DOMContentLoaded", function (ev) {
     console.log("DOMContentLoaded event");
     fetchDataFromTopicID()
 });
+
+function signOut() {
+    console.log("clicked");
+   firebase.auth().signOut()
+	
+   .then(function() {
+      console.log('Signout Succesfull')
+   }, function(error) {
+      console.log('Signout Failed')  
+   });
+}

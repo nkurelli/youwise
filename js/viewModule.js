@@ -89,3 +89,13 @@ function getYTId(url) {
 
     return url.match(VID_REGEX)[1];
 }
+
+function signOut() {
+   firebase.auth().signOut()
+	
+   .then(function() {
+      console.log('Signout Succesfull')
+   }, function(error) {
+      console.log('Signout Failed')  
+   });
+}

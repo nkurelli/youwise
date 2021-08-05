@@ -20,6 +20,12 @@ body {
     border-color:  #CFB997 !important;
 }
 
+/* log out button */
+
+#logout {
+    background-color: #CFB997 !important;
+    border-color:  #CFB997 !important;   
+}
 /* On viewTopics.html */
 #module {
     background-color: #CFB997 !important;
