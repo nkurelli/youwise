@@ -2,6 +2,7 @@ console.log('init viewTopics')
 let databob;
 let datarob;
 let usersArray;
+let useriddd;
 window.onload = event => {
   // Firebase authentication goes here.
   firebase.auth().onAuthStateChanged(user => {
@@ -10,6 +11,7 @@ window.onload = event => {
       console.log("Logged in as: " + user.displayName);
       
       document.querySelector("#nameStuff").innerHTML = user.displayName;
+      document.querySelector("#userid").innerHTML+=user.uid;
       document.querySelector("#userDropdown").innerHTML+=`<img class="img-profile rounded-circle" src="${user.photoURL}">`;
       getTopics(user.uid);
       addUser(user);
@@ -29,6 +31,7 @@ const addUser = user => {
         for (const noteItem in data2) {
             console.log("started");
             const note = data2[noteItem];
+            console.log(noteItem);
             if(user.displayName===note.name){
                 found = true;
                 console.log("found");
@@ -65,13 +68,52 @@ const createCard = (noteId, note) => {
          <a class="card shadow mb-4" href="viewTopic.html?topicId=${noteId}">
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">${note.name}</h6>
+                
             </div>
             <div class="card-body">
                 <p>${note.description}</p>
                 <img class= card-img-top src=${note.image}>
+                
             </div>
-        </a>`;
+            
+        </a>
+        <a class="btn btn-primary"  id="${noteId}" onClick="saveTopic(this)" >Save topic</a>
+            `;
 };
+
+function saveTopic(btn){
+    console.log("savetopics method called")
+    useridd = document.querySelector("#userid").innerHTML;
+    console.log(useridd);
+    const notesRef3 = firebase.database().ref(`users/`);
+    notesRef3.on("value", snapshot => {
+        const data4 = snapshot.val();
+        for (const noteItem in data4) {
+            const note = data4[noteItem];
+            console.log("note item" + note.name);
+            if(document.querySelector("#nameStuff").innerHTML===note.name){
+                useriddd = noteItem;
+                console.log("user found: " + noteItem);
+            }
+        }
+    });
+
+    
+    const notesRef2 = firebase.database().ref(`topics/`);
+
+    notesRef2.on("value", snapshot => {
+        console.log("savetopics value called")
+        const data2 = snapshot.val();
+        const note = data2[btn.id];
+        console.log(btn.id)
+        console.log(note)
+        console.log("bob" + useriddd);
+        firebase.database().ref(`users/${useriddd}/`).push({
+            name: note.name,
+            descriptition: note.description
+        })
+    });
+}
 
 const searchButton = document.getElementById('search-button');
 const searchInput = document.getElementById('search-input');

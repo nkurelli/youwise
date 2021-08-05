@@ -58,3 +58,6 @@ a.card{
 .back-button{
     margin: 0 0 1rem 1.5rem;
 }
+#userid{
+    display:none;
+}
