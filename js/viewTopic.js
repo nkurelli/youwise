@@ -1,29 +1,63 @@
 const titleTag = document.querySelector("#topic-page-title")
 const descriptionTag = document.querySelector("#topic-page-description")
 const heroTag = document.querySelector("#topic-page-hero")
+const moduleWrapper = document.querySelector("#topic-page-module-wrapper")
 
-function getContentFromHash() {
-    console.log('its working')
-    var theHash = window.location.hash;
-    theHash = theHash.substring(1);
-    if (theHash.length > 0) {
-        const topicsRef = firebase.database().ref(`topics/${theHash}`);
+const urlParams = new URLSearchParams(window.location.search);
+const topicId = urlParams.get('topicId');
+
+function fetchDataFromTopicID() {
+    if (topicId) {
+        const topicsRef = firebase.database().ref(`topics/${topicId}`);
         topicsRef.on('value', (snapshot) => {
             const data = snapshot.val();
             titleTag.innerHTML = data.name
             descriptionTag.innerHTML = data.description
             console.log(heroTag)
             heroTag.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${data.image}")`
+
+            renderModules(data)
         });
     }
 }
 
-window.addEventListener("hashchange", function () {
-    console.log("hashchange event");
-    getContentFromHash();
-});
+const renderModules = (data) => {
+    for (key in data) {
+        if (key !== "description" && key !== "image" && key !== "name") {
+            const module = data[key];
+            let contentWrapper = ""
+
+            module.content.forEach(content => {
+                contentWrapper += `
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+    ${"Content name"}
+    <span class="badge badge-primary badge-pill">${content.type}</span>
+  </li>
+                `
+            })
+
+            moduleWrapper.innerHTML += `
+                <div>
+                    <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">${module.name}</h6>
+            </div>
+            <div class="card-body">
+                <p>${module.description}</p>
+                <img class= card-img-top src=${module.image}>
+            </div>
+<ul class="list-group">
+            ${contentWrapper}
+            </ul>
+        </div>
+
+                </div>
+            `
+        }
+    }
+}
 
 window.addEventListener("DOMContentLoaded", function (ev) {
     console.log("DOMContentLoaded event");
-    getContentFromHash();
+    fetchDataFromTopicID()
 });

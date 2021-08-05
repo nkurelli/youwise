@@ -9,23 +9,22 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Dashboard</title>
+    <title>Courses</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <!-- <link
+    <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet"> -->
+        rel="stylesheet">
 
     <!-- Custom styles for this template-->
-     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <script defer src="/__/firebase/8.3.1/firebase.js"></script>
     <!-- include only the Firebase features as you need -->
     <script defer src="/__/firebase/8.3.1/firebase-database.js"></script>
     <script defer src="/__/firebase/init.js?useEmulator=true"></script>
-    <script src="js/redirect.js"></script>
-    
+    <link href="css/sb-admin-2.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
 </head>
 
 <body id="page-top">
@@ -148,98 +147,16 @@
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                <div class="container-fluid">
-
+                <div id="topic-page-hero">
                     <!-- Page Heading -->
-                    <!-- <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Add Module</h1>
-                    </div> -->
+                    <h1 class="h3 mb-4" id="topic-page-title">Topic Title</h1>
+                    <p class="mb-4" id="topic-page-description">Here is where the description </p>
                 </div>
-                <section class="hero is-fullheight is-default is-bold">
-                    <div class="hero-body">
-                        <div class="container ">
-                            <div class="columns is-vcentered">
-                            
-                                <div class="column is-9 is-offset-1">
-                                    <h1 class="title is-2 has-text-weight-bold has-text-left ">
-                                        Create a new module
-                                    </h1>
-                                   
-                                      <button type="submit" class="btn btn-primary mb-2" style="position:absolute; right:18%; top: 1%;"onclick="onAddModule()">Add
-                                        Module</button>
-                                    <!-- <h2 class="subtitle is-4">
-                                        Please fill out the form for adding a module for a existing topic.
-                                    </h2> -->
-                                    <br />
+                <div class="container-fluid" id="topic-page-module-wrapper">
 
-                                    <div class="form-group">
-                                        <label for="topicSelection" class="has-text-left is-size-7 has-text-weight-semibold" >Choose Topic</label>
-                                        <select class="form-control form-control-md" id="topicSelection">
-                                        </select>
 
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="moduleNameInput" class="has-text-left is-size-7 has-text-weight-semibold">Name</label>
-                                        <input type="email" class="form-control input" id="moduleNameInput"
-                                            placeholder="Module Name">
 
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="moduleDescriptionInput" class="has-text-left is-size-7 has-text-weight-semibold">Description</label>
-                                        <textarea class="form-control input" id="moduleDescriptionInput" rows="3"
-                                            placeholder="Module Description"></textarea>
-
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="moduleImgInput" class="has-text-left is-size-7 has-text-weight-semibold">Cover Image (Horizontal)</label>
-                                        <input type="text" class="form-control" id="moduleImgInput"
-                                            placeholder="Image URL">
-
-                                    </div>
-                                  
-
-                                    <hr />
-                                    <div class="card">
-                                        <header class="card-header">
-                                            <h6 class="has-text-center is-size-5 has-text-weight-semibold">Add Content</h6>
-                                        </header>
-                                        <div class="card-content">
-                                            <label for="name" class="has-text-left is-size-7 has-text-weight-semibold">Name</label>
-                                             <input type="text" class="input" id="contentName"
-                                            placeholder="Name">
-                                             <label for="name" class="has-text-left is-size-7 has-text-weight-semibold">Estimated Time to Complete</label>
-                                             <input type="number" min="1" class="input" id="contentTime"
-                                            placeholder="Minutes">
-                                        <div class="form-group">
-                                            <label for="topicSelection" class="has-text-left is-size-7 has-text-weight-semibold">Content Type</label>
-                                            <select class="form-control form-control-md select" id="contentTypeSelect">
-                                                <option value="">Choose Type</option>
-                                                <option value="Website">Website </option>
-                                                <option value="Youtube Video">Youtube Video</option>
-                                                <option value="PDF">PDF</option>
-                                            </select>
-
-                                              <div class="form-group">
-                                        <label for="contentURL" class="has-text-left is-size-7 has-text-weight-semibold">URL</label>
-                                        <input type="text" class="input" id="contentURL"
-                                            placeholder="https://">
-
-                                    </div>
-                                        </div>
-                                        </div>
-
-                                    </div>
-                                    <div style="padding: 4%; text-align:center;"><button type="submit" class="btn btn-primary mb-2" onclick="onAddNewContent()">Add
-                                        Content</button></div>
-                                    
-
-                                    <div id="contentItems"></div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </section>
+                </div>
                 <!-- /.container-fluid -->
 
             </div>
@@ -249,16 +166,15 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
+                        <span>Copyright &copy; Your Website 2020</span>
                     </div>
                 </div>
             </footer>
             <!-- End of Footer -->
 
         </div>
-
-
         <!-- End of Content Wrapper -->
+
     </div>
     <!-- End of Page Wrapper -->
 
@@ -300,6 +216,10 @@
     <!-- Page level plugins -->
     <script src="js/addModule.js"></script>
 
+    <!-- Custom scripts for all pages-->
+
+    <script src="js/userName.js"></script>
+    <script src="js/viewModule.js"></script>
 </body>
 
 </html>
