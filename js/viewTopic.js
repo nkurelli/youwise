@@ -3,14 +3,12 @@ const descriptionTag = document.querySelector("#topic-page-description")
 const heroTag = document.querySelector("#topic-page-hero")
 const moduleWrapper = document.querySelector("#topic-page-module-wrapper")
 
-console.log(URLSearchParams(window.location.search));
+const urlParams = new URLSearchParams(window.location.search);
+const topicId = urlParams.get('topicId');
 
-function getContentFromHash() {
-    console.log('its working')
-    var theHash = window.location.hash;
-    theHash = theHash.substring(1);
-    if (theHash.length > 0) {
-        const topicsRef = firebase.database().ref(`topics/${theHash}`);
+function fetchDataFromTopicID() {
+    if (topicId) {
+        const topicsRef = firebase.database().ref(`topics/${topicId}`);
         topicsRef.on('value', (snapshot) => {
             const data = snapshot.val();
             titleTag.innerHTML = data.name
@@ -59,12 +57,7 @@ const renderModules = (data) => {
     }
 }
 
-window.addEventListener("hashchange", function () {
-    console.log("hashchange event");
-    getContentFromHash();
-});
-
 window.addEventListener("DOMContentLoaded", function (ev) {
     console.log("DOMContentLoaded event");
-    getContentFromHash();
+    fetchDataFromTopicID()
 });

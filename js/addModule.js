@@ -45,7 +45,7 @@ const renderTopicList = topics => {
 
 const onAddModule = () => {
     const topicId = selectContent.value
-    firebase.database().ref(`topics/${topicId}`).push({
+    firebase.database().ref(`topics/${topicId}/modules`).push({
         name: moduleNameInput.value,
         description: moduleDescriptionInput.value,
         image: moduleImgInput.value,
