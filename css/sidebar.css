@@ -16,6 +16,7 @@ body {
     border-color:  #CFB997 !important;
 }
 
+/* On viewTopics.html */
 #module {
     background-color: #CFB997 !important;
     border-color:  #CFB997 !important;
@@ -26,3 +27,13 @@ body {
     border-color:  #CFB997 !important;
 }
 
+/* on addmodule.html */
+#add-module {
+    background-color: #CFB997 !important;
+    border-color:  #CFB997 !important; 
+}
+
+#add-content {
+    background-color: #CFB997 !important;
+    border-color:  #CFB997 !important;   
+}
