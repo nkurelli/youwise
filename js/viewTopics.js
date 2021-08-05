@@ -107,9 +107,9 @@ function saveTopic(btn) {
         console.log(btn.id)
         console.log(note)
         console.log("bob" + useriddd);
-        firebase.database().ref(`users/${useriddd}/`).push({
+        firebase.database().ref(`users/${useriddd}/savedTopics`).push({
             name: note.name,
-            descriptition: note.description
+            description: note.description
         })
     });
 }
