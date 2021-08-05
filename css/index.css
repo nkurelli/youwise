@@ -1,6 +1,12 @@
 #img {
-    background-image: url("../assets/index.jpeg");
+    background-image: url("https://www.legendsoflearning.com/wp-content/uploads/2020/10/benefits-of-online-learning-graphic.png");
     /* background-size: cover; */
-    background-position: left;
+    background-position-x: 9%;
+    background-position-y: 30%;
     background-repeat: no-repeat;
+    background-size: 50%;
+    /* position: absolute;
+    */
+    
+    
 }

@@ -24,7 +24,41 @@ const moduleImgInput = document.querySelector("#moduleImgInput")
 const contentItems = document.querySelector("#contentItems")
 const selectContent = document.querySelector("#topicSelection");
 
+const validateModule = () => {
+    let num = 0;
+    if(selectContent.value === "") num++;
+    if (moduleNameInput.value === "") {
+        moduleNameInput.classList.add("is-danger");
+        num++;
+    }
+    if (moduleDescriptionInput.value === "") {
+        num++;
+        moduleDescriptionInput.classList.add("is-danger");
+    }
+    if (moduleImgInput.value === "") {
+        num++;
+        moduleImgInput.classList.add("is-danger");
+    }
 
+    if(Object.keys(moduleContents).length === 0) {
+        num++;
+        alert("You must add content to your modules!")
+    }
+
+    
+
+    return (num === 0? true: false)
+}
+
+moduleNameInput.addEventListener("input", e=> {
+    moduleNameInput.classList.remove("is-danger");
+})
+moduleDescriptionInput.addEventListener("input", e=> {
+    moduleDescriptionInput.classList.remove("is-danger");
+})
+moduleImgInput.addEventListener("input", e=> {
+    moduleImgInput.classList.remove("is-danger");
+})
 
 const updateSelect = () => {
     const topicsRef = firebase.database().ref(`topics`);
@@ -46,6 +80,8 @@ const renderTopicList = topics => {
 }
 
 const onAddModule = () => {
+    if (validateModule()) {
+    
     const topicId = selectContent.value
     firebase.database().ref(`topics/${topicId}/modules`).push({
         name: moduleNameInput.value,
@@ -61,11 +97,15 @@ const onAddModule = () => {
             moduleContents = {}
             renderContent()
         });
+    } else {
+        alert("You cannot leave module inputs empty!")
+    }
+
 }
-    const contentTypeSelect = document.querySelector("#contentTypeSelect")
-    const contentURL = document.querySelector("#contentURL")
-    const contentName = document.querySelector("#contentName");
-    const contentTime = document.querySelector("#contentTime");
+const contentTypeSelect = document.querySelector("#contentTypeSelect")
+const contentURL = document.querySelector("#contentURL")
+const contentName = document.querySelector("#contentName");
+const contentTime = document.querySelector("#contentTime");
 
 const onAddNewContent = () => {
 
