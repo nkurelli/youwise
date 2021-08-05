@@ -11,6 +11,9 @@ window.onload = event => {
       document.querySelector("#nameStuff").innerHTML = user.displayName;
       document.querySelector("#userDropdown").innerHTML+=`<img class="img-profile rounded-circle" src="${user.photoURL}">`;
       updateSelect()
+      console.log(user);
+      console.log(user.uuid);
+      console.log("i'm here");
     } else {
       // If not logged in, navigate back to login page.
       window.location = "index.html";

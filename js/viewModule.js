@@ -26,7 +26,7 @@ function fetchData() {
             console.log(data.content);
 
             moduleContentsData = data.content;
-            backButtonWrapper.innerHTML = `     <a type="button" class="btn btn-primary back-button" href="viewTopic.html?topicId=${topicId}">Back to Topic Page</a>`
+            backButtonWrapper.innerHTML = `     <a type="button" class="btn btn-primary back-button" id="back-to-topic" href="viewTopic.html?topicId=${topicId}">Back to Topic Page</a>`
 
             renderModuleContent(moduleContentsData)
         });
@@ -46,7 +46,9 @@ function renderModuleContent() {
         <div>
          <h1 class="h3 mb-4">${currentContent.name} (${currentContent.time} mins)</h1>
         </div>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/${getYTId(currentContent.url)}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div style="text-align: center">
+        <iframe width="560" height="315"  src="https://www.youtube.com/embed/${getYTId(currentContent.url)}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
      
     `
     }
