@@ -18,6 +18,7 @@
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <link href="css/sidebar.css" rel="stylesheet">
     <script defer src="/__/firebase/8.3.1/firebase.js"></script>
@@ -102,7 +103,7 @@
                             <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
                                 aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
+                                <button class="btn btn-primary" id="search-button" type="button">
                                     <i class="fas fa-search fa-sm"></i>
                                 </button>
                             </div>
@@ -151,40 +152,41 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Add Topic</h1>
-                    </div>
+                  
                 </div>
                 <section class="hero is-fullheight is-default is-bold">
                     <div class="hero-body">
-                        <div class="container has-text-centered">
+                        <div class="container ">
                             <div class="columns is-vcentered">
                                 <div class="column is-6 is-offset-3">
-                                    <h1 class="title is-2">
-                                        ➕ You Can Add A New Topic
+                                    <h1 class="title is-2 has-text-weight-bold has-text-centered">
+                                        Create a new topic
                                     </h1>
-                                    <h2 class="subtitle is-4">
+                                    <!-- <h2 class="subtitle is-4">
                                         Please fill out the form for adding a Topic
-                                    </h2>
+                                    </h2> -->
                                     <br />
                                     <div class="form-group">
-                                        <label for="topicNameInput">Name</label>
+                                        <label for="topicNameInput" class="has-text-left is-size-7 has-text-weight-semibold">Name</label>
                                         <input type="email" class="form-control" id="topicNameInput"
                             placeholder="Topic Name">
                                   
                                     </div>
                                     <div class="form-group">
-                                        <label for="topicDescriptionInput">Description</label>
+                                        <label for="topicDescriptionInput" class="has-text-left is-size-7 has-text-weight-semibold">Description</label>
                                          <textarea class="form-control" id="topicDescriptionInput" rows="3" placeholder="Topic Description"></textarea>
                                   
                                     </div>
                                     <div class="form-group">
-                                        <label for="topicImgInput">Cover Image (Horizontal)</label>
+                                        <label for="topicImgInput" class="has-text-left is-size-7 has-text-weight-semibold">Cover Image (Horizontal)</label>
                                         <input type="text" class="form-control" id="topicImgInput"
                                        placeholder="Image URL">
                                   
                                     </div>
-                                   <button type="submit" class="btn btn-primary mb-2" onclick="onAddTopic()">Add Topic</button>
+                                    <div style="text-align:center;">
+                                        <button type="submit" id = "add-topic" class="btn btn-primary mb-2" onclick="onAddTopic()">Add Topic</button>
+                                    </div>
+                                   
                                 </div>
                             </div>
                         </div>
