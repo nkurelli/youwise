@@ -1,4 +1,5 @@
 let databob2;
+let email;
 window.onload = event => {
   // Firebase authentication goes here.
   firebase.auth().onAuthStateChanged(user => {
@@ -6,6 +7,7 @@ window.onload = event => {
       // Console log the user to confirm they are logged in
       console.log("Logged in as: " + user.displayName);
       document.querySelector("#nameStuff").innerHTML = user.displayName;
+      email = user.email;
     //   document.querySelector("#name").innerHTML = user.displayName;
       document.querySelector("#userDropdown").innerHTML+=`<img class="img-profile rounded-circle" src="${user.photoURL}">`;
     //   document.querySelector("#dash").innerHTML+=`<img class="mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16" src="${user.photoURL}">`;
@@ -51,6 +53,8 @@ const createCard = note => {
             </div>
             <div class="card-body">
                 <img class= card-img-top src=${note.image}>
+                <hr>
+                <a class = "btn btn-primary" type=button href=mailto:${email}> Send an Email</a>
             </div>
         </div> </div>`;
 };
