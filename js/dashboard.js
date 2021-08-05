@@ -1,20 +1,3 @@
-
-
-
-
-
-
-
-function signOut() {
-   firebase.auth().signOut()
-	
-   .then(function() {
-      console.log('Signout Succesfull')
-   }, function(error) {
-      console.log('Signout Failed')  
-   });
-}
-
 let useriddd;
 window.onload = event => {
   // Firebase authentication goes here.
@@ -95,3 +78,13 @@ const createCard = (noteId, note) => {
   
             `;
 };
+
+function signOut() {
+   firebase.auth().signOut()
+	
+   .then(function() {
+      console.log('Signout Succesfull')
+   }, function(error) {
+      console.log('Signout Failed')  
+   });
+}
