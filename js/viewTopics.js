@@ -23,36 +23,34 @@ const addUser = user => {
     let found;
     console.log("addUser method called")
     const notesRef2 = firebase.database().ref(`users/`);
-  notesRef2.on("value", snapshot => {
-      console.log("notesref in users called")
-    const data2 = snapshot.val();
-    for (const noteItem in data2) {
-        console.log("started");
-        const note = data2[noteItem];
-        if(user.displayName===note.name){
-            found = true;
-            console.log("found");
+    notesRef2.on("value", snapshot => {
+        console.log("notesref in users called")
+        const data2 = snapshot.val();
+        for (const noteItem in data2) {
+            console.log("started");
+            const note = data2[noteItem];
+            if(user.displayName===note.name){
+                found = true;
+                console.log("found");
+            }
         }
-    }
-    if(!found){
-        firebase.database().ref(`users`).push({
-        name: user.displayName,
-        image: user.photoURL
-        })
-    }
-  });
-    
-
+        if(!found){
+            firebase.database().ref(`users`).push({
+            name: user.displayName,
+            image: user.photoURL
+            })
+        }
+    });
 };
 const getTopics = userId => {
     console.log("Getnotes called" + userId)
-  const notesRef = firebase.database().ref(`topics/`);
-  notesRef.on("value", snapshot => {
-    const data = snapshot.val();
-    databob = data;
-    console.log("notesref for topics called");
-    renderDataAsHtml(data);
-  });
+    const notesRef = firebase.database().ref(`topics/`);
+    notesRef.on("value", snapshot => {
+        const data = snapshot.val();
+        databob = data;
+        console.log("notesref for topics called");
+        renderDataAsHtml(data);
+    });
 };
 const renderDataAsHtml = data => {
   let cards = "";
@@ -78,21 +76,34 @@ const createCard = (noteId, note) => {
 const searchButton = document.getElementById('search-button');
 const searchInput = document.getElementById('search-input');
 searchButton.addEventListener('click', () => {
+    console.log("search button activated")
     let cards = "";
-  const inputValue = searchInput.value;
-  if(inputValue==""){
-      renderDataAsHtml(databob);
-  }
-  else{
-      for (const noteItem in databob) {
-    const note = databob[noteItem];
-    if(inputValue===note.name.toLowerCase()){
-        cards += createCard(note);
+    const inputValue = searchInput.value;
+    if(inputValue==""){
+        const notesRef = firebase.database().ref(`topics/`);
+        notesRef.on("value", snapshot => {
+            const data3 = snapshot.val();
+            for (const noteItem in data3) {
+                const note = data3[noteItem];
+                cards += createCard(noteItem, note);
+            }
+        });
     }
-  }
+    else{
+        const notesRef = firebase.database().ref(`topics/`);
+        notesRef.on("value", snapshot => {
+            const data3 = snapshot.val();
+            for (const noteItem in data3) {
+                const note = data3[noteItem];
+                console.log(note.name);
+                if(inputValue===note.name.toLowerCase()){
+                    cards += createCard(noteItem, note);
+                }
+            }
+        });
+    }
   document.querySelector("#app").innerHTML = cards;
-  }
-
+  
 });
 
 function signOut() {
