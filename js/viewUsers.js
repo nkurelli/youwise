@@ -1,56 +1,26 @@
-console.log('init viewTopics')
-let databob;
-let datarob;
-let usersArray;
+let databob2;
 window.onload = event => {
   // Firebase authentication goes here.
   firebase.auth().onAuthStateChanged(user => {
     if (user) {
       // Console log the user to confirm they are logged in
       console.log("Logged in as: " + user.displayName);
-      
       document.querySelector("#nameStuff").innerHTML = user.displayName;
       document.querySelector("#userDropdown").innerHTML+=`<img class="img-profile rounded-circle" src="${user.photoURL}">`;
-      getTopics(user.uid);
-      addUser(user);
+      getUsers(user.uid);
     } else {
       // If not logged in, navigate back to login page.
       window.location = "index.html";
     }
   });
 };
-const addUser = user => {
-    let found;
-    console.log("addUser method called")
-    const notesRef2 = firebase.database().ref(`users/`);
-  notesRef2.on("value", snapshot => {
-      console.log("notesref in users called")
-    const data2 = snapshot.val();
-    for (const noteItem in data2) {
-        console.log("started");
-        const note = data2[noteItem];
-        if(user.displayName===note.name){
-            found = true;
-            console.log("found");
-        }
-    }
-    if(!found){
-        firebase.database().ref(`users`).push({
-        name: user.displayName,
-        image: user.photoURL
-        })
-    }
-  });
-    
 
-};
-const getTopics = userId => {
+const getUsers = userId => {
     console.log("Getnotes called" + userId)
-  const notesRef = firebase.database().ref(`topics/`);
+  const notesRef = firebase.database().ref(`users/`);
   notesRef.on("value", snapshot => {
     const data = snapshot.val();
-    databob = data;
-    console.log("notesref for topics called");
+    databob2 = data;
     renderDataAsHtml(data);
   });
 };
@@ -60,16 +30,15 @@ const renderDataAsHtml = data => {
     const note = data[noteItem];
     cards += createCard(note);
   }
-  document.querySelector("#app").innerHTML = cards;
+  document.querySelector("#app2").innerHTML = cards;
 };
 const createCard = note => {
   return `
-         <div class="card shadow mb-4">
+         <div class="card shadow mb-4" style="width: 20rem;">
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">${note.name}</h6>
             </div>
             <div class="card-body">
-                <p>${note.description}</p>
                 <img class= card-img-top src=${note.image}>
             </div>
         </div>`;
@@ -81,16 +50,16 @@ searchButton.addEventListener('click', () => {
     let cards = "";
   const inputValue = searchInput.value;
   if(inputValue==""){
-      renderDataAsHtml(databob);
+      renderDataAsHtml(databob2);
   }
   else{
-      for (const noteItem in databob) {
-    const note = databob[noteItem];
+      for (const noteItem in databob2) {
+    const note = databob2[noteItem];
     if(inputValue===note.name.toLowerCase()){
         cards += createCard(note);
     }
   }
-  document.querySelector("#app").innerHTML = cards;
+  document.querySelector("#app2").innerHTML = cards;
   }
 
 });
