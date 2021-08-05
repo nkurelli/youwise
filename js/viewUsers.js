@@ -6,7 +6,9 @@ window.onload = event => {
       // Console log the user to confirm they are logged in
       console.log("Logged in as: " + user.displayName);
       document.querySelector("#nameStuff").innerHTML = user.displayName;
+      document.querySelector("#name").innerHTML = user.displayName;
       document.querySelector("#userDropdown").innerHTML+=`<img class="img-profile rounded-circle" src="${user.photoURL}">`;
+      document.querySelector("#dash").innerHTML+=`<img class="mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16" src="${user.photoURL}">`;
       getUsers(user.uid);
     } else {
       // If not logged in, navigate back to login page.
