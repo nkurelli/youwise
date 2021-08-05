@@ -24,7 +24,18 @@ function fetchDataFromTopicID() {
 }
 
 const renderModules = (data) => {
+    let moduleCount = 0;
+    let divCount = 0;
+
     for (key in data) {
+        if(moduleCount % 3 === 0) {
+            console.log("here", moduleCount);
+            moduleWrapper.innerHTML += '<div class="row">';
+            divCount++;
+        }
+        
+
+        moduleCount++;
 
         const module = data[key];
         let contentWrapper = ""
@@ -36,11 +47,11 @@ const renderModules = (data) => {
     <span class="badge badge-primary badge-pill">${content.type}</span>
   </li>
                 `
-        })
+        });
 
         moduleWrapper.innerHTML += `
-                <div>
-                    <a class="card shadow mb-4" href="viewModule.html?topicId=${topicId}&moduleId=${key}">
+                <div class="col-4">
+                    <a class="card shadow mb-6" href="viewModule.html?topicId=${topicId}&moduleId=${key}">
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">${module.name}</h6>
             </div>
@@ -57,6 +68,9 @@ const renderModules = (data) => {
             `
 
     }
+    for(let i = 0; i < divCount; i++) {
+      moduleWrapper.innerHTML +=`</div>`
+  }
 }
 
 window.addEventListener("DOMContentLoaded", function (ev) {
