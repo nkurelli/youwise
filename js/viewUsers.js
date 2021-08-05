@@ -32,6 +32,7 @@ const renderDataAsHtml = data => {
   for (const noteItem in data) {
   
     const note = data[noteItem];
+    console.log(note);
  
     cards += createCard(note);
   }
@@ -44,6 +45,7 @@ const createCard = note => {
          <div class="card shadow mb-4" style="width: 20rem;">
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">${note.name}</h6>
+                
             </div>
             <div class="card-body">
                 <img class= card-img-top src=${note.image}>

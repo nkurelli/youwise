@@ -1,3 +1,10 @@
+
+
+
+
+
+
+
 function signOut() {
    firebase.auth().signOut()
 	
@@ -7,3 +14,4 @@ function signOut() {
       console.log('Signout Failed')  
    });
 }
+
