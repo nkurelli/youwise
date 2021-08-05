@@ -149,11 +149,11 @@
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                <div class="container-fluid">
+                <div class="container-fluid" >
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-1 text-gray-800">USERS</h1>
-                    <p class="mb-4" id="subt">See other users learning on our platform and email them to find out more!</p>
+                    <h1 class="h3 mb-1 text-gray-800" style="text-align: left">USERS</h1>
+                    <p class="mb-4" id="subt" style="text-align: left">See other users learning on our platform and email them to find out more!</p>
 
                     <!-- Content Row -->
                     
@@ -164,14 +164,9 @@
                     <!-- </div> -->
 
 
-                    <div class="container">
+                    <div class="container" id="app2">
                         <div class="section">
-                            <div class="columns">
-                                <div class="column has-text-centered">
-
-                                    <br />
-                                </div>
-                            </div>
+            
                             <div id="app2" class="columns is-multiline">
                                 <!-- Note cards will render here -->
                             </div>
@@ -219,7 +214,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <a class="btn btn-primary" onClick="signOut()" href="index.html">Logout</a>
                 </div>
             </div>
         </div>
@@ -241,6 +236,7 @@
     <!-- Custom scripts for all pages-->
     <script src="js/viewUsers.js"></script>
 
+   
 </body>
 
 </html>

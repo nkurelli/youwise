@@ -20,20 +20,33 @@ const getUsers = userId => {
   const notesRef = firebase.database().ref(`users/`);
   notesRef.on("value", snapshot => {
     const data = snapshot.val();
+    console.log(data);
     databob2 = data;
     renderDataAsHtml(data);
   });
 };
 const renderDataAsHtml = data => {
+    console.log(data)
   let cards = "";
+  let count = 0;
+  let divCount = 0;
   for (const noteItem in data) {
+    if(count % 3 === 0) {
+        cards += '<div class="row">';
+        divCount++;
+    }
     const note = data[noteItem];
+    count++;
     cards += createCard(note);
+  }
+  for(let i = 0; i < divCount; i++) {
+      cards +=`</div>`
   }
   document.querySelector("#app2").innerHTML = cards;
 };
 const createCard = note => {
   return `
+  <div class="col">
          <div class="card shadow mb-4" style="width: 20rem;">
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">${note.name}</h6>
@@ -41,7 +54,7 @@ const createCard = note => {
             <div class="card-body">
                 <img class= card-img-top src=${note.image}>
             </div>
-        </div>`;
+        </div> </div>`;
 };
 
 const searchButton = document.getElementById('search-button');
@@ -63,3 +76,13 @@ searchButton.addEventListener('click', () => {
   }
 
 });
+
+function signOut() {
+   firebase.auth().signOut()
+	
+   .then(function() {
+      console.log('Signout Succesfull')
+   }, function(error) {
+      console.log('Signout Failed')  
+   });
+}
