@@ -58,13 +58,13 @@ const renderDataAsHtml = data => {
   let cards = "";
   for (const noteItem in data) {
     const note = data[noteItem];
-    cards += createCard(note);
+    cards += createCard(noteItem, note);
   }
   document.querySelector("#app").innerHTML = cards;
 };
-const createCard = note => {
+const createCard = (noteId, note) => {
   return `
-         <div class="card shadow mb-4">
+         <a class="card shadow mb-4" href="viewTopic.html?topicId=${noteId}">
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">${note.name}</h6>
             </div>
@@ -72,7 +72,7 @@ const createCard = note => {
                 <p>${note.description}</p>
                 <img class= card-img-top src=${note.image}>
             </div>
-        </div>`;
+        </a>`;
 };
 
 const searchButton = document.getElementById('search-button');

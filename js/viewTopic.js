@@ -3,6 +3,7 @@ const descriptionTag = document.querySelector("#topic-page-description")
 const heroTag = document.querySelector("#topic-page-hero")
 const moduleWrapper = document.querySelector("#topic-page-module-wrapper")
 
+
 const urlParams = new URLSearchParams(window.location.search);
 const topicId = urlParams.get('topicId');
 
@@ -16,29 +17,30 @@ function fetchDataFromTopicID() {
             console.log(heroTag)
             heroTag.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${data.image}")`
 
-            renderModules(data)
+            renderModules(data.modules)
+            
         });
     }
 }
 
 const renderModules = (data) => {
     for (key in data) {
-        if (key !== "description" && key !== "image" && key !== "name") {
-            const module = data[key];
-            let contentWrapper = ""
 
-            module.content.forEach(content => {
-                contentWrapper += `
+        const module = data[key];
+        let contentWrapper = ""
+
+        module.content.forEach(content => {
+            contentWrapper += `
                   <li class="list-group-item d-flex justify-content-between align-items-center">
-    ${"Content name"}
+    ${content.name}
     <span class="badge badge-primary badge-pill">${content.type}</span>
   </li>
                 `
-            })
+        })
 
-            moduleWrapper.innerHTML += `
+        moduleWrapper.innerHTML += `
                 <div>
-                    <div class="card shadow mb-4">
+                    <a class="card shadow mb-4" href="viewModule.html?topicId=${topicId}&moduleId=${key}">
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">${module.name}</h6>
             </div>
@@ -53,7 +55,7 @@ const renderModules = (data) => {
 
                 </div>
             `
-        }
+
     }
 }
 
