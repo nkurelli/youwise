@@ -4,7 +4,11 @@ body {
     font-family: 'Karla', sans-serif;
 }
 
-
+/* search bar */
+#search-bar {
+    position:absolute !important; 
+    right: 35% !important;
+}
 /* removed bg-gradient-primary from the accordina sidebar class */
 #accordionSidebar {
     background-color: #CFB997 !important;
