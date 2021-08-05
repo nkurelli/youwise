@@ -89,20 +89,21 @@ const onAddNewContent = () => {
     }
 }
 
-contentTypeSelect.addEventListener("onInput", e => {
+// when user enters field, it removes the red error from being empty
+contentTypeSelect.addEventListener("input", e => {
     contentTypeSelect.classList.remove("is-danger");
 })
-contentName.addEventListener("onInput", e => {
+contentName.addEventListener("input", e => {
     contentName.classList.remove("is-danger");
 })
-contentURL.addEventListener("onInput", e => {
+contentURL.addEventListener("input", e => {
     contentURL.classList.remove("is-danger");
 })
-contentTime.addEventListener("onInput", e => {
+contentTime.addEventListener("input", e => {
     contentTime.classList.remove("is-danger");
 })
 
-
+// checks if inputs are empty or not
 const validateContent = () => {
     let num = 0;
     if (contentTypeSelect.value === "") {
