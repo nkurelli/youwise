@@ -9,6 +9,7 @@ const descriptionTag = document.querySelector("#topic-page-description")
 const heroTag = document.querySelector("#topic-page-hero")
 const contentWrapper = document.querySelector("#module-page-content-wrapper")
 const backButtonWrapper = document.querySelector("#back-button")
+const progressWrapper = document.querySelector("#view-module-progress")
 
 let moduleContentsData = []
 let currentIndex = 0;
@@ -18,12 +19,9 @@ function fetchData() {
         const topicsRef = firebase.database().ref(`topics/${topicId}/modules/${moduleId}`);
         topicsRef.on('value', (snapshot) => {
             const data = snapshot.val();
-            console.log(data)
             titleTag.innerHTML = data.name
             descriptionTag.innerHTML = data.description
-            console.log(heroTag)
             heroTag.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${data.image}")`
-            console.log(data.content);
 
             moduleContentsData = data.content;
             backButtonWrapper.innerHTML = `     <a type="button" class="btn btn-primary back-button" id="back-to-topic" href="viewTopic.html?topicId=${topicId}">Back to Topic Page</a>`
@@ -40,8 +38,6 @@ function renderModuleContent() {
     contentWrapper.innerHTML = ""
 
     if (currentContent.type === "Youtube Video") {
-
-        console.log(getYTId(currentContent.url))
         contentWrapper.innerHTML = `
         <div>
          <h1 class="h3 mb-4">${currentContent.name} (${currentContent.time} mins)</h1>
@@ -53,8 +49,8 @@ function renderModuleContent() {
     `
     }
 
-    else{
-contentWrapper.innerHTML = `
+    else {
+        contentWrapper.innerHTML = `
     <div>
          <h1 class="h3 mb-4">${currentContent.name} (${currentContent.time} mins)</h1>
         </div>
@@ -62,7 +58,19 @@ contentWrapper.innerHTML = `
      
     `
     }
+
+    let backButton = ` <button type="button" class="btn btn-outline-primary"
+                        onclick="previousContent()" ${currentIndex === 0 ? "disabled" : ""}>Previous</button>`
+    let nextButton = ` <button type="button" class="btn btn-outline-primary" onclick="nextContent()" ${(currentIndex === moduleContentsData.length - 1) ? "disabled" : ""}>Next</button>`
+
+    let progressContent = ``;
     
+    moduleContentsData.forEach((content, i) => {
+        progressContent += `<div class="${i === currentIndex ? "module-progress-item-active" : "module-progress-item"}" onclick="moveToIndex(${i})"></div>`
+    })
+
+    progressWrapper.innerHTML = `${backButton} <div class="module-progress-item-wrapper">${progressContent}</div> ${nextButton}`
+
 }
 
 function nextContent() {
@@ -79,6 +87,11 @@ function previousContent() {
     renderModuleContent()
 }
 
+function moveToIndex(index) {
+    currentIndex = index;
+        renderModuleContent()
+}
+
 window.addEventListener("DOMContentLoaded", function (ev) {
     console.log("DOMContentLoaded event");
     fetchData()
@@ -91,11 +104,11 @@ function getYTId(url) {
 }
 
 function signOut() {
-   firebase.auth().signOut()
-	
-   .then(function() {
-      console.log('Signout Succesfull')
-   }, function(error) {
-      console.log('Signout Failed')  
-   });
+    firebase.auth().signOut()
+
+        .then(function () {
+            console.log('Signout Succesfull')
+        }, function (error) {
+            console.log('Signout Failed')
+        });
 }

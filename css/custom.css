@@ -67,3 +67,33 @@ a.card{
     margin: 1rem 0;
     row-gap: 3rem;
 }
+
+.module-progress-item{
+    width: 15px;
+    height: 15px;
+    background-color: grey;
+    border-radius: 50%;
+}
+
+.module-progress-item-active{
+        width: 15px;
+    height: 15px;
+    background-color: #CFB997;
+        border-radius: 50%;
+        cursor: pointer;
+}
+
+.module-progress-item-wrapper{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+         cursor: pointer;
+}
+
+#view-module-progress{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 1rem;
+    margin: 2rem 0 0 0;
+}
