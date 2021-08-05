@@ -28,20 +28,14 @@ const getUsers = userId => {
 const renderDataAsHtml = data => {
     console.log(data)
   let cards = "";
-  let count = 0;
-  let divCount = 0;
+
   for (const noteItem in data) {
-    if(count % 3 === 0) {
-        cards += '<div class="row">';
-        divCount++;
-    }
+  
     const note = data[noteItem];
-    count++;
+ 
     cards += createCard(note);
   }
-  for(let i = 0; i < divCount; i++) {
-      cards +=`</div>`
-  }
+
   document.querySelector("#app2").innerHTML = cards;
 };
 const createCard = note => {
